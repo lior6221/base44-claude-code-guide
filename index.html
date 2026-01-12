@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base44 + Claude Code | המדריך המלא לחיבור</title>
-    <meta name="description" content="איך לחבר את Base44 ל-Claude Code ב-30 דקות - מדריך מלא עם קוד, טיפים ופתרון בעיות">
+    <title>Base44 + Claude Code | חיבור וסנכרון נתונים</title>
+    <meta name="description" content="איך לחבר את Base44 ל-Claude Code ולסנכרן נתונים אמיתיים - מדריך מלא עם קוד, טיפים ופתרון בעיות">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -140,7 +140,7 @@
             </h1>
 
             <p class="text-xl md:text-2xl text-slate-400 text-center max-w-3xl mx-auto mb-12">
-                המדריך המלא לסנכרון דאטא בין פלטפורמת Low-Code לסביבת פיתוח מקומית.
+                סנכרון קוד דרך GitHub + חיבור לנתונים אמיתיים דרך API.
                 <span class="text-white font-medium">עם כל הפרומפטים והשגיאות שבדרך.</span>
             </p>
 
@@ -171,25 +171,37 @@
         <!-- Architecture Diagram -->
         <div class="relative z-10 max-w-4xl mx-auto px-6 -mt-10">
             <div class="glass rounded-2xl p-8 glow">
-                <div class="text-center text-sm text-slate-400 mb-6">ארכיטקטורת החיבור</div>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
-                    <div class="bg-slate-800/50 rounded-xl px-6 py-4 border border-slate-700">
-                        <div class="text-2xl mb-1">Base44</div>
-                        <div class="text-xs text-slate-500">Production App</div>
+                <div class="text-center text-sm text-slate-400 mb-6">איך זה עובד</div>
+                <div class="flex flex-col gap-6">
+                    <!-- Row 1: Code Sync -->
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                        <div class="bg-slate-800/50 rounded-xl px-6 py-4 border border-slate-700">
+                            <div class="text-xl mb-1">Base44</div>
+                            <div class="text-xs text-slate-500">קוד האפליקציה</div>
+                        </div>
+                        <div class="text-slate-500 flex items-center gap-2">
+                            <svg class="w-6 h-6 rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                            <span class="text-xs">GitHub Sync</span>
+                        </div>
+                        <div class="bg-purple-900/30 rounded-xl px-6 py-4 border border-purple-700/50">
+                            <div class="text-xl mb-1">Claude Code</div>
+                            <div class="text-xs text-slate-500">קורא ועורך קוד</div>
+                        </div>
                     </div>
-                    <div class="text-brand-400 text-2xl">
-                        <svg class="w-8 h-8 rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                    </div>
-                    <div class="bg-purple-900/30 rounded-xl px-6 py-4 border border-purple-700/50">
-                        <div class="text-2xl mb-1">MCP Server</div>
-                        <div class="text-xs text-slate-500">localhost bridge</div>
-                    </div>
-                    <div class="text-purple-400 text-2xl">
-                        <svg class="w-8 h-8 rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                    </div>
-                    <div class="bg-pink-900/30 rounded-xl px-6 py-4 border border-pink-700/50">
-                        <div class="text-2xl mb-1">Claude Code</div>
-                        <div class="text-xs text-slate-500">AI Assistant</div>
+                    <!-- Row 2: Data Sync -->
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                        <div class="bg-slate-800/50 rounded-xl px-6 py-4 border border-slate-700">
+                            <div class="text-xl mb-1">Base44 API</div>
+                            <div class="text-xs text-slate-500">הנתונים האמיתיים</div>
+                        </div>
+                        <div class="text-green-500 flex items-center gap-2">
+                            <svg class="w-6 h-6 rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                            <span class="text-xs">REST API</span>
+                        </div>
+                        <div class="bg-green-900/30 rounded-xl px-6 py-4 border border-green-700/50">
+                            <div class="text-xl mb-1">Local Dev</div>
+                            <div class="text-xs text-slate-500">npm run dev</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -203,6 +215,14 @@
             <p class="text-slate-400 text-center mb-16 max-w-2xl mx-auto">חיבור מלא בין סביבת הפיתוח המקומית לדאטא האמיתי ב-Base44</p>
 
             <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass rounded-2xl p-6 step-card">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Claude Code עם הקוד</h3>
+                    <p class="text-slate-400 text-sm">סנכרון GitHub - Claude Code יכול לקרוא ולערוך את הקוד שלך</p>
+                </div>
+
                 <div class="glass rounded-2xl p-6 step-card">
                     <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -218,14 +238,6 @@
                     <h3 class="text-xl font-semibold mb-2">סנכרון דו-כיווני</h3>
                     <p class="text-slate-400 text-sm">שינויים מקומיים מתעדכנים ישירות ב-Base44</p>
                 </div>
-
-                <div class="glass rounded-2xl p-6 step-card">
-                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Claude Code עם דאטא</h3>
-                    <p class="text-slate-400 text-sm">Claude יכול לגשת ולעבוד עם הנתונים האמיתיים</p>
-                </div>
             </div>
         </div>
     </section>
@@ -240,7 +252,7 @@
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">1</div>
-                    <h3 class="text-xl font-semibold">ההתחלה</h3>
+                    <h3 class="text-xl font-semibold">ההתחלה - סנכרון הקוד</h3>
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
                     <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
@@ -249,7 +261,7 @@
                 <div class="response-bubble rounded-xl p-5">
                     <div class="text-purple-400 text-sm mb-2 font-medium">Claude עשה:</div>
                     <ul class="text-slate-300 space-y-1">
-                        <li>• שכפל את הריפו מ-GitHub</li>
+                        <li>• שכפל את הריפו מ-GitHub (שמסונכרן עם Base44)</li>
                         <li>• קרא את מבנה הפרויקט</li>
                         <li>• הבין את הטכנולוגיות (React, Vite, Base44 SDK)</li>
                     </ul>
@@ -260,19 +272,40 @@
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">2</div>
-                    <h3 class="text-xl font-semibold">בקשה ל-MCP Server</h3>
+                    <h3 class="text-xl font-semibold">בקשה לחיבור הנתונים</h3>
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
                     <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
-                    <p class="text-lg">"אתה יכול ליצור MCP Server שיתחבר לדאטא ב-Base44???"</p>
+                    <p class="text-lg">"אתה יכול להתחבר לדאטא ב-Base44???"</p>
                 </div>
-                <div class="response-bubble rounded-xl p-5">
-                    <div class="text-purple-400 text-sm mb-2 font-medium">Claude עשה:</div>
-                    <ul class="text-slate-300 space-y-1">
-                        <li>• הסביר מה זה MCP (Model Context Protocol)</li>
-                        <li>• יצר תיקיית mcp-server עם הקוד</li>
-                        <li>• ביקש API Key ו-App ID מהגדרות Base44</li>
-                    </ul>
+                <div class="response-bubble rounded-xl p-5 mb-4">
+                    <div class="text-purple-400 text-sm mb-2 font-medium">Claude ביקש:</div>
+                    <p class="text-slate-300">API Key ו-App ID מהגדרות Base44</p>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">מה נתתי:</div>
+                    <p class="text-slate-300">הדבקתי קטע קוד מדשבורד Base44 שהראה איך לגשת ל-entity אחד (Account). מזה Claude הבין את ה-pattern לכל ה-entities.</p>
+                    <div class="code-block mt-3">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            Base44 Dashboard - API Example
+                        </div>
+                        <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono text-sm">const APP_ID = "your_app_id";
+const API_KEY = "your_api_key";
+
+// Example for Account entity
+fetch(`https://app.base44.com/api/apps/${APP_ID}/entities/Account`, {
+    headers: { 'api_key': API_KEY }
+})</code></pre>
+                    </div>
+                </div>
+                <div class="success-bubble rounded-xl p-5">
+                    <div class="text-green-400 text-sm mb-2 font-medium">Claude הבין:</div>
+                    <p class="text-slate-300">מדוגמה אחת - הבין את ה-pattern לכל ה-entities ויצר חיבור API מלא.</p>
                 </div>
             </div>
 
@@ -392,7 +425,7 @@
                 </div>
             </div>
 
-            <!-- Prompt 9 - Critical Error -->
+            <!-- Prompt 9 - Critical Error with REAL Screenshot -->
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold">9</div>
@@ -400,12 +433,17 @@
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
                     <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
-                    <p class="text-lg">[שלחתי צילום מסך של שגיאות]</p>
+                    <p class="text-lg">שלחתי צילום מסך של השגיאה:</p>
                 </div>
                 <div class="error-bubble rounded-xl p-5 mb-4">
-                    <div class="text-red-400 text-sm mb-2 font-medium">השגיאה:</div>
-                    <div class="code-block mt-2">
-                        <pre class="p-3 text-red-300 font-mono text-sm">useAuth must be used within an AuthProvider</pre>
+                    <div class="text-red-400 text-sm mb-2 font-medium">השגיאה שהתקבלה ב-Base44:</div>
+                    <!-- Real Screenshot -->
+                    <div class="mt-3 rounded-lg overflow-hidden border border-red-900/50">
+                        <img src="images/base44-error.png" alt="Base44 Error Screenshot" class="w-full">
+                    </div>
+                    <div class="mt-4 code-block">
+                        <pre class="p-3 text-red-300 font-mono text-sm">Error: useAuth must be used within an AuthProvider
+Error: useProfile must be used within ProfileProvider</pre>
                     </div>
                     <p class="text-slate-300 mt-3">הקוד בודק import.meta.env שלא קיים בסביבת Base44 Production.</p>
                 </div>
@@ -445,7 +483,7 @@ const IS_DEV = typeof import.meta !== 'undefined' &&
                     <div class="text-green-400 text-sm mb-2 font-medium">התוצאה הסופית:</div>
                     <ul class="text-slate-300 space-y-1">
                         <li>• אפליקציה רצה מקומית עם נתונים אמיתיים</li>
-                        <li>• Claude Code יכול לגשת לכל הדאטא</li>
+                        <li>• Claude Code יכול לקרוא ולערוך את הקוד</li>
                         <li>• סנכרון דו-כיווני עם Base44</li>
                         <li>• Production עובד כרגיל</li>
                     </ul>
@@ -578,8 +616,8 @@ if (body.profile_id) {
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="glass rounded-xl p-6">
                     <div class="text-2xl mb-3">1.</div>
-                    <h3 class="font-semibold mb-2">התחילו קטן</h3>
-                    <p class="text-slate-400 text-sm">קודם רק MCP Server לקריאת נתונים, אחר כך Dev Mode</p>
+                    <h3 class="font-semibold mb-2">תנו דוגמה אחת</h3>
+                    <p class="text-slate-400 text-sm">נתתי קטע קוד ל-entity אחד - Claude הבין את ה-pattern לכולם</p>
                 </div>
                 <div class="glass rounded-xl p-6">
                     <div class="text-2xl mb-3">2.</div>
