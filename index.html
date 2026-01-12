@@ -151,8 +151,8 @@
                     <div class="text-slate-500 text-sm">דקות כולל טעויות</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-purple-400">100%</div>
-                    <div class="text-slate-500 text-sm">חינמי</div>
+                    <div class="text-4xl font-bold text-purple-400">$0</div>
+                    <div class="text-slate-500 text-sm">מעבר למנויים קיימים</div>
                 </div>
                 <div class="text-center">
                     <div class="text-4xl font-bold text-pink-400">11</div>
@@ -254,7 +254,7 @@
                         <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">סנכרון דו-כיווני</h3>
-                    <p class="text-slate-400 text-sm">שינויים מקומיים מתעדכנים ישירות ב-Base44</p>
+                    <p class="text-slate-400 text-sm">שינויים מקומיים מתעדכנים ב-Base44, ושינויים ב-Base44 נראים מקומית (לאחר רענון)</p>
                 </div>
             </div>
         </div>
@@ -302,7 +302,16 @@
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
                     <div class="text-brand-400 text-sm mb-2 font-medium">מה נתתי:</div>
-                    <p class="text-slate-300">הדבקתי קטע קוד מדשבורד Base44 שהראה איך לגשת ל-entity אחד (Account). מזה Claude הבין את ה-pattern לכל ה-entities.</p>
+                    <p class="text-slate-300 mb-3">הדבקתי קטע קוד מדשבורד Base44. מזה Claude הבין את ה-pattern לכל ה-entities.</p>
+                    <div class="bg-slate-800/50 rounded-lg p-4 mb-3">
+                        <div class="text-brand-300 text-sm font-medium mb-2">איך להגיע לקוד הזה:</div>
+                        <ol class="text-slate-400 text-sm space-y-1 list-decimal list-inside">
+                            <li>היכנסו לדשבורד של האפליקציה ב-Base44</li>
+                            <li>בתפריט הצדדי לחצו על <strong class="text-white">"API"</strong></li>
+                            <li>העתיקו את קטע הקוד שמופיע שם</li>
+                            <li>הדביקו ל-Claude Code</li>
+                        </ol>
+                    </div>
                     <div class="code-block mt-3">
                         <div class="code-header">
                             <div class="code-dots">
@@ -325,6 +334,15 @@ fetch(`https://app.base44.com/api/apps/${APP_ID}/entities/Account`, {
                     <div class="text-green-400 text-sm mb-2 font-medium">Claude הבין:</div>
                     <p class="text-slate-300">מדוגמה אחת - הבין את ה-pattern לכל ה-entities ויצר חיבור API מלא.</p>
                 </div>
+            </div>
+
+            <!-- Local Environment Note -->
+            <div class="mb-8 bg-blue-950/30 border border-blue-900/50 rounded-xl p-4">
+                <div class="flex items-center gap-2 text-blue-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span class="font-medium">שימו לב:</span>
+                </div>
+                <p class="text-slate-400 text-sm mt-1">מכאן והלאה - כל הבדיקות והשגיאות הן <strong class="text-white">בסביבה המקומית</strong> (npm run dev על המחשב שלכם), עד שנעלה ל-Production בשלב 10.</p>
             </div>
 
             <!-- Prompt 3 - Error -->
@@ -686,13 +704,19 @@ if (body.profile_id) {
                         <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-red-400 mb-2">אזהרת אבטחה</h3>
-                        <ul class="text-slate-300 space-y-2">
-                            <li>• <strong>לעולם</strong> אל תעלו API Keys לריפו פומבי</li>
-                            <li>• השתמשו <strong>תמיד</strong> בקובץ .env (שנמצא ב-.gitignore)</li>
-                            <li>• ב-Base44 ניתן ליצור API Key חדש ולבטל ישנים בכל עת</li>
-                            <li>• ה-Dev Mode עובד רק עם משתני סביבה מקומיים</li>
+                        <h3 class="text-xl font-semibold text-red-400 mb-4">אזהרת אבטחה</h3>
+                        <ul class="text-slate-300 space-y-3">
+                            <li>• <strong>לעולם</strong> אל תעלו API Keys לריפו פומבי - גם לא בטעות בקומיט ישן</li>
+                            <li>• השתמשו <strong>תמיד</strong> בקובץ .env (וודאו שהוא נמצא ב-.gitignore)</li>
+                            <li>• ה-Dev Mode עובד <strong>רק</strong> עם משתני סביבה מקומיים - ב-Production הקוד עובד כרגיל</li>
+                            <li>• ה-API Key נותן גישה <strong>מלאה</strong> לנתונים - שמרו עליו כמו על סיסמה</li>
+                            <li>• אם חושבים שה-Key נחשף - החליפו אותו מיד בדשבורד Base44</li>
                         </ul>
+                        <div class="mt-4 pt-4 border-t border-red-900/30">
+                            <p class="text-slate-400 text-sm">
+                                <strong class="text-slate-300">למה זה בטוח?</strong> הקוד שהוספנו בודק אם קיים משתנה סביבה מקומי. ב-Production של Base44 המשתנה לא קיים, ולכן הקוד ממשיך לעבוד עם מערכת האימות הרגילה. משתמשים אחרים לא מושפעים.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -706,7 +730,7 @@ if (body.profile_id) {
                 <span class="text-white font-medium">זה באמת עובד כמו קסם.</span>
             </p>
             <p class="text-slate-500 mb-6">
-                נבנה על ידי <span class="text-white">Lior</span> עם <span class="text-brand-400">Claude Code</span> | ינואר 2026
+                נבנה על ידי <span class="text-white">Lior Levi</span> עם <span class="text-brand-400">Claude Code</span> | ינואר 2026
             </p>
             <div class="flex justify-center gap-6">
                 <a href="https://base44.com" target="_blank" class="text-slate-500 hover:text-white transition-colors">Base44</a>

@@ -31,8 +31,8 @@ A practical guide on how to connect Base44 (low-code platform) to Claude Code fo
 ## Key Features
 
 - **50 minutes setup** - Including trial and error
-- **Two-way sync** - Local changes reflect in Base44
-- **100% free** - No paid services required
+- **Two-way sync** - Local changes reflect in Base44, and Base44 changes appear locally (after refresh)
+- **$0 extra cost** - Beyond existing Base44 and Claude subscriptions
 - **Backwards compatible** - Production code unaffected
 
 ## Quick Start
@@ -51,4 +51,4 @@ A practical guide on how to connect Base44 (low-code platform) to Claude Code fo
 
 ---
 
-Built by **Lior** with **Claude Code** | January 2026
+Built by **Lior Levi** with **Claude Code** | January 2026
