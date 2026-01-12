@@ -1,6 +1,6 @@
 # Base44 + Claude Code Integration Guide
 
-A comprehensive guide on how to connect Base44 (low-code platform) to Claude Code using MCP Server.
+A practical guide on how to connect Base44 (low-code platform) to Claude Code for local development with real data sync.
 
 ## Live Guide
 
@@ -9,14 +9,28 @@ A comprehensive guide on how to connect Base44 (low-code platform) to Claude Cod
 ## What's Inside
 
 - Step-by-step integration instructions
-- MCP Server setup for Claude Code
-- Dev mode configuration for local development
+- Dev mode configuration for local development with real data
+- REST API setup for data synchronization
 - Backend functions modification pattern
-- Common issues and solutions
+- Common issues and solutions (with real screenshots)
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    CODE SYNC (GitHub)                        │
+├─────────────────────────────────────────────────────────────┤
+│   Base44 App  ◄────── GitHub Sync ──────►  Claude Code      │
+├─────────────────────────────────────────────────────────────┤
+│                    DATA SYNC (REST API)                      │
+├─────────────────────────────────────────────────────────────┤
+│   Base44 API  ◄────── REST API ──────►  Local Dev Server    │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ## Key Features
 
-- **30 minutes setup** - From zero to connected
+- **50 minutes setup** - Including trial and error
 - **Two-way sync** - Local changes reflect in Base44
 - **100% free** - No paid services required
 - **Backwards compatible** - Production code unaffected
@@ -24,15 +38,15 @@ A comprehensive guide on how to connect Base44 (low-code platform) to Claude Cod
 ## Quick Start
 
 1. Set up GitHub sync with Base44
-2. Create MCP Server for Claude Code
-3. Configure dev mode in your app
-4. Update backend functions
+2. Clone repo locally for Claude Code
+3. Configure dev mode with API credentials
+4. Update backend functions for dual auth support
 
 ## Technologies
 
 - Base44 (Low-code platform)
 - Claude Code (AI coding assistant)
-- MCP (Model Context Protocol)
+- REST API (Direct API integration)
 - Vite + React
 
 ---
