@@ -218,10 +218,30 @@
                     רציתי להמשיך לעבוד על האפליקציה עם Claude Code, אבל הבעיה הייתה שבסביבה מקומית -
                     <span class="text-white font-medium">לא הצלחתי לראות את העסקאות, הקטגוריות והנתונים שלי</span>.
                 </p>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed mb-4">
                     הפרומפטים שתראו למטה מתארים את התהליך של חיבור הדאטא האמיתי לסביבה המקומית -
                     כולל הרגע שבו דף העסקאות היה ריק לגמרי ואיך פתרנו את זה.
                 </p>
+                <div class="bg-purple-950/30 border border-purple-900/50 rounded-xl p-4 mt-4">
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        <strong class="text-purple-400">שימו לב:</strong> לכל אחד יש את ה-Use Case שלו והאפליקציה שלו.
+                        המדריך הזה מציג את <strong class="text-white">העקרונות והדרך</strong> שעבדה אצלי -
+                        אבל כל אחד צריך לעבוד מול Claude Code ולהבין איתו יחד איך ליישם את זה על האפליקציה שלו.
+                        תהיה ניסוי וטעייה, אבל המדריך נותן בסיס טוב להבנה של מה צריך לעשות.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Skill Download -->
+            <div class="mt-6 glass rounded-2xl p-6 text-center">
+                <h3 class="text-lg font-semibold mb-2">רוצים להתחיל מהר?</h3>
+                <p class="text-slate-400 text-sm mb-4">הורידו את ה-Skill ל-Claude Code שיעזור לכם בתהליך</p>
+                <a href="https://github.com/lior6221/base44-claude-code-guide/blob/main/SKILL.md" target="_blank"
+                   class="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-3 rounded-xl transition-all hover:scale-105">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    להורדת ה-Skill מ-GitHub
+                </a>
+                <p class="text-slate-500 text-xs mt-3">העתיקו את הקובץ לתיקיית <code class="bg-slate-800 px-2 py-1 rounded">~/.claude/skills/base44-local-dev/SKILL.md</code></p>
             </div>
         </div>
     </section>
@@ -695,9 +715,28 @@ if (body.profile_id) {
         </div>
     </section>
 
-    <!-- Security Warning -->
+    <!-- Why It's Safe -->
     <section class="py-24">
         <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-green-950/30 border border-green-900/50 rounded-2xl p-8 mb-8">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-green-400 mb-4">למה זה בטוח?</h3>
+                        <ul class="text-slate-300 space-y-3">
+                            <li>• <strong class="text-green-300">Dev Mode מופעל רק מקומית</strong> - הקוד בודק אם קיים משתנה סביבה שקיים רק במחשב שלכם</li>
+                            <li>• <strong class="text-green-300">Production לא מושפע</strong> - ב-Base44 המשתנה לא קיים, ולכן הקוד עובד כרגיל עם מערכת האימות המקורית</li>
+                            <li>• <strong class="text-green-300">משתמשים אחרים לא יודעים</strong> - אף אחד לא יכול להפעיל Dev Mode בלי הגישה למחשב שלכם</li>
+                            <li>• <strong class="text-green-300">הקוד תואם לאחור</strong> - השינויים שעשינו תומכים בשני מצבי העבודה בו-זמנית</li>
+                            <li>• <strong class="text-green-300">API Key נשאר אצלכם</strong> - הוא בקובץ .env שלא עולה ל-GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Warning -->
             <div class="bg-red-950/30 border border-red-900/50 rounded-2xl p-8">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -712,11 +751,6 @@ if (body.profile_id) {
                             <li>• ה-API Key נותן גישה <strong>מלאה</strong> לנתונים - שמרו עליו כמו על סיסמה</li>
                             <li>• אם חושבים שה-Key נחשף - החליפו אותו מיד בדשבורד Base44</li>
                         </ul>
-                        <div class="mt-4 pt-4 border-t border-red-900/30">
-                            <p class="text-slate-400 text-sm">
-                                <strong class="text-slate-300">למה זה בטוח?</strong> הקוד שהוספנו בודק אם קיים משתנה סביבה מקומי. ב-Production של Base44 המשתנה לא קיים, ולכן הקוד ממשיך לעבוד עם מערכת האימות הרגילה. משתמשים אחרים לא מושפעים.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
