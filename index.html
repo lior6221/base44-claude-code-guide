@@ -155,7 +155,7 @@
                     <div class="text-slate-500 text-sm">חינמי</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-pink-400">10</div>
+                    <div class="text-4xl font-bold text-pink-400">11</div>
                     <div class="text-slate-500 text-sm">פרומפטים בלבד</div>
                 </div>
             </div>
@@ -204,6 +204,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Intro Section -->
+    <section class="py-20 bg-slate-900/30">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="glass rounded-2xl p-8">
+                <h2 class="text-2xl font-bold mb-4">הרקע</h2>
+                <p class="text-slate-300 text-lg leading-relaxed mb-4">
+                    בניתי אפליקציית תקציב מותאמת אישית לצרכים שלי ב-Base44.
+                    רציתי להמשיך לעבוד על האפליקציה עם Claude Code, אבל הבעיה הייתה שבסביבה מקומית -
+                    <span class="text-white font-medium">לא הצלחתי לראות את העסקאות, הקטגוריות והנתונים שלי</span>.
+                </p>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    הפרומפטים שתראו למטה מתארים את התהליך של חיבור הדאטא האמיתי לסביבה המקומית -
+                    כולל הרגע שבו דף העסקאות היה ריק לגמרי ואיך פתרנו את זה.
+                </p>
             </div>
         </div>
     </section>
@@ -385,10 +403,31 @@ fetch(`https://app.base44.com/api/apps/${APP_ID}/entities/Account`, {
                 </div>
             </div>
 
-            <!-- Prompt 7 -->
+            <!-- Prompt 7 - Update All Functions -->
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">7</div>
+                    <h3 class="text-xl font-semibold">עדכון כל הפונקציות</h3>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"תעדכן את כל הפונקציות בפרויקט כך שיעבדו גם מקומית (עם profile_id) וגם ב-Production (עם auth.me)"</p>
+                </div>
+                <div class="response-bubble rounded-xl p-5">
+                    <div class="text-purple-400 text-sm mb-2 font-medium">Claude עשה:</div>
+                    <ul class="text-slate-300 space-y-1">
+                        <li>• עבר על כל ה-Functions בתיקיית backend</li>
+                        <li>• עדכן כל פונקציה לתמוך בשני מצבי האימות</li>
+                        <li>• שמר על תאימות לאחור - Production ממשיך לעבוד כרגיל</li>
+                        <li>• הוסיף את ה-pattern הסטנדרטי לכל הפונקציות</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Prompt 8 -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">8</div>
                     <h3 class="text-xl font-semibold">שאלת אבטחה</h3>
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
@@ -405,10 +444,10 @@ fetch(`https://app.base44.com/api/apps/${APP_ID}/entities/Account`, {
                 </div>
             </div>
 
-            <!-- Prompt 8 -->
+            <!-- Prompt 9 -->
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">8</div>
+                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">9</div>
                     <h3 class="text-xl font-semibold">לפני ה-Push</h3>
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
@@ -425,10 +464,10 @@ fetch(`https://app.base44.com/api/apps/${APP_ID}/entities/Account`, {
                 </div>
             </div>
 
-            <!-- Prompt 9 - Critical Error with REAL Screenshot -->
+            <!-- Prompt 10 - Critical Error with REAL Screenshot -->
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold">9</div>
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold">10</div>
                     <h3 class="text-xl font-semibold">קריסה ב-Production!</h3>
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
@@ -469,10 +508,10 @@ const IS_DEV = typeof import.meta !== 'undefined' &&
                 </div>
             </div>
 
-            <!-- Prompt 10 - Final Success -->
+            <!-- Prompt 11 - Final Success -->
             <div class="mb-12">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-sm font-bold">10</div>
+                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-sm font-bold">11</div>
                     <h3 class="text-xl font-semibold">סיום מוצלח!</h3>
                 </div>
                 <div class="prompt-bubble rounded-xl p-5 mb-4">
