@@ -98,6 +98,22 @@
                 linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
             background-size: 50px 50px;
         }
+        .prompt-bubble {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
+            border-right: 4px solid #0ea5e9;
+        }
+        .response-bubble {
+            background: linear-gradient(135deg, #1e293b 0%, #2d1f3d 100%);
+            border-right: 4px solid #8b5cf6;
+        }
+        .error-bubble {
+            background: linear-gradient(135deg, #3b1f1f 0%, #1e293b 100%);
+            border-right: 4px solid #ef4444;
+        }
+        .success-bubble {
+            background: linear-gradient(135deg, #1f3b2d 0%, #1e293b 100%);
+            border-right: 4px solid #22c55e;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-white font-sans antialiased">
@@ -125,33 +141,29 @@
 
             <p class="text-xl md:text-2xl text-slate-400 text-center max-w-3xl mx-auto mb-12">
                 המדריך המלא לסנכרון דאטא בין פלטפורמת Low-Code לסביבת פיתוח מקומית.
-                <span class="text-white font-medium">ב-30 דקות.</span>
+                <span class="text-white font-medium">עם כל הפרומפטים והשגיאות שבדרך.</span>
             </p>
 
             <!-- Stats -->
             <div class="flex flex-wrap justify-center gap-8 mb-16">
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-brand-400">30</div>
-                    <div class="text-slate-500 text-sm">דקות התקנה</div>
+                    <div class="text-4xl font-bold text-brand-400">50</div>
+                    <div class="text-slate-500 text-sm">דקות כולל טעויות</div>
                 </div>
                 <div class="text-center">
                     <div class="text-4xl font-bold text-purple-400">100%</div>
                     <div class="text-slate-500 text-sm">חינמי</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-pink-400">2-Way</div>
-                    <div class="text-slate-500 text-sm">סנכרון דו-כיווני</div>
+                    <div class="text-4xl font-bold text-pink-400">10</div>
+                    <div class="text-slate-500 text-sm">פרומפטים בלבד</div>
                 </div>
             </div>
 
-            <!-- CTA Buttons -->
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#start" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-brand-500/25">
-                    להתחיל עכשיו
-                </a>
-                <a href="GUIDE.md" class="glass hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                    הסיפור המלא
+            <!-- CTA Button -->
+            <div class="flex justify-center">
+                <a href="#story" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-brand-500/25">
+                    לקרוא את הסיפור המלא
                 </a>
             </div>
         </div>
@@ -187,7 +199,7 @@
     <!-- What You Get Section -->
     <section class="py-24 bg-slate-900/50">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">מה תקבלו?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">מה תקבלו בסוף?</h2>
             <p class="text-slate-400 text-center mb-16 max-w-2xl mx-auto">חיבור מלא בין סביבת הפיתוח המקומית לדאטא האמיתי ב-Base44</p>
 
             <div class="grid md:grid-cols-3 gap-6">
@@ -196,7 +208,7 @@
                         <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">דאטא אמיתי מקומית</h3>
-                    <p class="text-slate-400 text-sm">הרצה של `npm run dev` עם כל הנתונים האמיתיים מ-Base44</p>
+                    <p class="text-slate-400 text-sm">הרצה של npm run dev עם כל הנתונים האמיתיים מ-Base44</p>
                 </div>
 
                 <div class="glass rounded-2xl p-6 step-card">
@@ -218,112 +230,239 @@
         </div>
     </section>
 
-    <!-- Steps Section -->
-    <section id="start" class="py-24">
+    <!-- The Story Section -->
+    <section id="story" class="py-24">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">4 צעדים להתחברות</h2>
-            <p class="text-slate-400 text-center mb-16">עקבו אחרי המדריך ותהיו מחוברים תוך חצי שעה</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">הסיפור המלא</h2>
+            <p class="text-slate-400 text-center mb-16">כל הפרומפטים, הבעיות והפתרונות - בדיוק כמו שקרה</p>
 
-            <!-- Step 1 -->
-            <div class="mb-16">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center font-bold">1</div>
-                    <h3 class="text-2xl font-semibold">סנכרון GitHub</h3>
+            <!-- Prompt 1 -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                    <h3 class="text-xl font-semibold">ההתחלה</h3>
                 </div>
-                <p class="text-slate-400 mb-6">חברו את הריפו שלכם ל-Base44. כל push ל-main יעדכן אוטומטית את ה-Preview.</p>
-                <div class="code-block">
-                    <div class="code-header">
-                        <div class="code-dots">
-                            <span class="dot-red"></span>
-                            <span class="dot-yellow"></span>
-                            <span class="dot-green"></span>
-                        </div>
-                        Terminal
-                    </div>
-                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">git remote add origin https://github.com/YOUR_USER/YOUR_APP
-git push -u origin main</code></pre>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"בפרויקט הזה אני רוצה לסנכרן את האפליקציה שלי מ-Base44 אליך באמצעות GitHub. אחר כך אני רוצה שנעבוד יחד על האפליקציה ונסנכרן את הדאטא."</p>
+                </div>
+                <div class="response-bubble rounded-xl p-5">
+                    <div class="text-purple-400 text-sm mb-2 font-medium">Claude עשה:</div>
+                    <ul class="text-slate-300 space-y-1">
+                        <li>• שכפל את הריפו מ-GitHub</li>
+                        <li>• קרא את מבנה הפרויקט</li>
+                        <li>• הבין את הטכנולוגיות (React, Vite, Base44 SDK)</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Step 2 -->
-            <div class="mb-16">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-10 h-10 bg-purple-500 rounded-xl flex items-center justify-center font-bold">2</div>
-                    <h3 class="text-2xl font-semibold">יצירת MCP Server</h3>
+            <!-- Prompt 2 -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                    <h3 class="text-xl font-semibold">בקשה ל-MCP Server</h3>
                 </div>
-                <p class="text-slate-400 mb-6">MCP מאפשר ל-Claude Code לתקשר עם Base44. צרו תיקייה חדשה:</p>
-                <div class="code-block mb-4">
-                    <div class="code-header">
-                        <div class="code-dots">
-                            <span class="dot-red"></span>
-                            <span class="dot-yellow"></span>
-                            <span class="dot-green"></span>
-                        </div>
-                        mcp-server/package.json
-                    </div>
-                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">{
-  "name": "base44-mcp-server",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.5.0",
-    "dotenv": "^16.3.1"
-  }
-}</code></pre>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"אתה יכול ליצור MCP Server שיתחבר לדאטא ב-Base44???"</p>
                 </div>
-                <div class="code-block">
-                    <div class="code-header">
-                        <div class="code-dots">
-                            <span class="dot-red"></span>
-                            <span class="dot-yellow"></span>
-                            <span class="dot-green"></span>
-                        </div>
-                        .mcp.json (project root)
-                    </div>
-                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">{
-  "mcpServers": {
-    "base44": {
-      "command": "node",
-      "args": ["mcp-server/index.js"]
-    }
-  }
-}</code></pre>
+                <div class="response-bubble rounded-xl p-5">
+                    <div class="text-purple-400 text-sm mb-2 font-medium">Claude עשה:</div>
+                    <ul class="text-slate-300 space-y-1">
+                        <li>• הסביר מה זה MCP (Model Context Protocol)</li>
+                        <li>• יצר תיקיית mcp-server עם הקוד</li>
+                        <li>• ביקש API Key ו-App ID מהגדרות Base44</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Step 3 -->
-            <div class="mb-16">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-10 h-10 bg-pink-500 rounded-xl flex items-center justify-center font-bold">3</div>
-                    <h3 class="text-2xl font-semibold">הגדרת Dev Mode</h3>
+            <!-- Prompt 3 - Error -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                    <h3 class="text-xl font-semibold">בעיה ראשונה - לולאת Redirect</h3>
                 </div>
-                <p class="text-slate-400 mb-6">הנקודה הקריטית - בדיקה בטוחה של environment variables שלא תקרוס ב-Production:</p>
-                <div class="code-block">
-                    <div class="code-header">
-                        <div class="code-dots">
-                            <span class="dot-red"></span>
-                            <span class="dot-yellow"></span>
-                            <span class="dot-green"></span>
-                        </div>
-                        Safe Dev Mode Check
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"מלא רענונים ללא עליית האפליקציה.. ה-URL הולך ומתארך בכל רענון"</p>
+                </div>
+                <div class="error-bubble rounded-xl p-5 mb-4">
+                    <div class="text-red-400 text-sm mb-2 font-medium">מה קרה:</div>
+                    <p class="text-slate-300">הדפדפן נכנס ללולאה - כל שנייה URL ארוך יותר עם redirect חוזר. מערכת ה-Auth מנסה לאמת משתמש, לא מוצאת, מפנה ל-login, שמפנה חזרה...</p>
+                </div>
+                <div class="success-bubble rounded-xl p-5">
+                    <div class="text-green-400 text-sm mb-2 font-medium">הפתרון:</div>
+                    <p class="text-slate-300">יצירת "Dev Mode" - כשרצים מקומית, מדלגים על האימות ויוצרים mock user.</p>
+                </div>
+            </div>
+
+            <!-- Prompt 4 - Error -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                    <h3 class="text-xl font-semibold">בעיה שנייה - פרופיל ריק</h3>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"האפליקציה נפתחה אבל עם פרופיל נקי ללא הנתונים שלי מהדאטא ב-Base44"</p>
+                </div>
+                <div class="error-bubble rounded-xl p-5 mb-4">
+                    <div class="text-red-400 text-sm mb-2 font-medium">מה קרה:</div>
+                    <p class="text-slate-300">המערכת יצרה פרופיל חדש למשתמש "dev@local" במקום לטעון את הפרופיל האמיתי.</p>
+                </div>
+                <div class="success-bubble rounded-xl p-5">
+                    <div class="text-green-400 text-sm mb-2 font-medium">הפתרון:</div>
+                    <p class="text-slate-300">הוספת האימייל האמיתי להגדרות ה-Dev Mode במשתני סביבה.</p>
+                </div>
+            </div>
+
+            <!-- Prompt 5 - Success -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-sm font-bold">5</div>
+                    <h3 class="text-xl font-semibold">הצלחה ראשונה!</h3>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"עובד!! עכשיו אם אני מוסיף עסקה פה באופן מקומי זה ישתקף ב-Base44 גם בעצם?"</p>
+                </div>
+                <div class="success-bubble rounded-xl p-5">
+                    <div class="text-green-400 text-sm mb-2 font-medium">התשובה:</div>
+                    <p class="text-slate-300">כן! כל שינוי מקומי מתעדכן ישירות ב-Base44 כי משתמשים באותו API.</p>
+                </div>
+            </div>
+
+            <!-- Prompt 6 - Error -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold">6</div>
+                    <h3 class="text-xl font-semibold">בעיה שלישית - חלק מהדפים לא עובדים</h3>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"רגע יש בעיה, בדשבורד אני רואה את הנתונים, אך בדף עסקאות, דף קבועות, דוחות והגדרות - לא"</p>
+                </div>
+                <div class="error-bubble rounded-xl p-5 mb-4">
+                    <div class="text-red-400 text-sm mb-2 font-medium">מה קרה:</div>
+                    <p class="text-slate-300">הדשבורד קורא ישירות מה-API, אבל דפים אחרים משתמשים ב-Functions (פונקציות צד-שרת) שדורשות אימות אחר.</p>
+                </div>
+                <div class="success-bubble rounded-xl p-5">
+                    <div class="text-green-400 text-sm mb-2 font-medium">הפתרון:</div>
+                    <p class="text-slate-300">עדכון כל ה-Functions לתמוך גם ב-profile_id בגוף הבקשה (Dev Mode) וגם ב-auth.me() (Production).</p>
+                </div>
+            </div>
+
+            <!-- Prompt 7 -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">7</div>
+                    <h3 class="text-xl font-semibold">שאלת אבטחה</h3>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"ואם יוזר אחר ייכנס לאפליקציה? אין חשש לזה שיש מצב dev בקוד?"</p>
+                </div>
+                <div class="response-bubble rounded-xl p-5">
+                    <div class="text-purple-400 text-sm mb-2 font-medium">Claude הסביר:</div>
+                    <ul class="text-slate-300 space-y-1">
+                        <li>• Dev Mode פועל רק עם משתנה סביבה מיוחד שלא קיים ב-Production</li>
+                        <li>• ה-API Key שמור בקובץ .env שלא עולה ל-GitHub</li>
+                        <li>• יוזרים אחרים ממשיכים להשתמש כרגיל</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Prompt 8 -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-sm font-bold">8</div>
+                    <h3 class="text-xl font-semibold">לפני ה-Push</h3>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"אם אנחנו מעלים את השינויים - יש לי דרך לחזור אחורה?"</p>
+                </div>
+                <div class="response-bubble rounded-xl p-5 mb-4">
+                    <div class="text-purple-400 text-sm mb-2 font-medium">Claude הסביר:</div>
+                    <p class="text-slate-300">כן, Git שומר את כל ההיסטוריה. אפשר תמיד לחזור לגרסה קודמת עם git revert.</p>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"כן בוא נעלה את השינויים"</p>
+                </div>
+            </div>
+
+            <!-- Prompt 9 - Critical Error -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold">9</div>
+                    <h3 class="text-xl font-semibold">קריסה ב-Production!</h3>
+                </div>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">[שלחתי צילום מסך של שגיאות]</p>
+                </div>
+                <div class="error-bubble rounded-xl p-5 mb-4">
+                    <div class="text-red-400 text-sm mb-2 font-medium">השגיאה:</div>
+                    <div class="code-block mt-2">
+                        <pre class="p-3 text-red-300 font-mono text-sm">useAuth must be used within an AuthProvider</pre>
                     </div>
-                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono"><span class="text-pink-400">// WRONG - will crash in Base44</span>
+                    <p class="text-slate-300 mt-3">הקוד בודק import.meta.env שלא קיים בסביבת Base44 Production.</p>
+                </div>
+                <div class="success-bubble rounded-xl p-5">
+                    <div class="text-green-400 text-sm mb-2 font-medium">הפתרון המיידי:</div>
+                    <div class="code-block mt-2">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            Safe Dev Mode Check
+                        </div>
+                        <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono text-sm"><span class="text-red-400">// קוד שקורס:</span>
 const IS_DEV = import.meta.env.VITE_DEV_MODE === 'true';
 
-<span class="text-green-400">// CORRECT - safe check</span>
+<span class="text-green-400">// קוד בטוח:</span>
 const IS_DEV = typeof import.meta !== 'undefined' &&
                import.meta.env &&
                import.meta.env.VITE_DEV_MODE === 'true';</code></pre>
+                    </div>
                 </div>
             </div>
 
-            <!-- Step 4 -->
-            <div class="mb-16">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold">4</div>
-                    <h3 class="text-2xl font-semibold">עדכון Backend Functions</h3>
+            <!-- Prompt 10 - Final Success -->
+            <div class="mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-sm font-bold">10</div>
+                    <h3 class="text-xl font-semibold">סיום מוצלח!</h3>
                 </div>
-                <p class="text-slate-400 mb-6">כל Function צריכה לתמוך ב-profile_id מהבקשה (ל-dev mode) בנוסף ל-auth.me():</p>
+                <div class="prompt-bubble rounded-xl p-5 mb-4">
+                    <div class="text-brand-400 text-sm mb-2 font-medium">הפרומפט שלי:</div>
+                    <p class="text-lg">"נדיר נראה שתוקן ועובד!"</p>
+                </div>
+                <div class="success-bubble rounded-xl p-5">
+                    <div class="text-green-400 text-sm mb-2 font-medium">התוצאה הסופית:</div>
+                    <ul class="text-slate-300 space-y-1">
+                        <li>• אפליקציה רצה מקומית עם נתונים אמיתיים</li>
+                        <li>• Claude Code יכול לגשת לכל הדאטא</li>
+                        <li>• סנכרון דו-כיווני עם Base44</li>
+                        <li>• Production עובד כרגיל</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Section -->
+    <section class="py-24 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">הקוד החשוב</h2>
+            <p class="text-slate-400 text-center mb-16">שלושה קטעי קוד קריטיים שצריך להכיר</p>
+
+            <!-- Code 1 -->
+            <div class="mb-10">
+                <h3 class="text-xl font-semibold mb-4">1. קובץ .env (לא עולה ל-Git!)</h3>
                 <div class="code-block">
                     <div class="code-header">
                         <div class="code-dots">
@@ -331,15 +470,53 @@ const IS_DEV = typeof import.meta !== 'undefined' &&
                             <span class="dot-yellow"></span>
                             <span class="dot-green"></span>
                         </div>
-                        Backwards-compatible Function Pattern
+                        .env
+                    </div>
+                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">VITE_DEV_MODE=true
+VITE_BASE44_APP_ID=your_app_id
+VITE_BASE44_ACCESS_TOKEN=your_api_key
+VITE_DEV_PROFILE_ID=your_profile_id
+VITE_DEV_USER_EMAIL=your@email.com</code></pre>
+                </div>
+            </div>
+
+            <!-- Code 2 -->
+            <div class="mb-10">
+                <h3 class="text-xl font-semibold mb-4">2. בדיקת Dev Mode בטוחה</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        JavaScript
+                    </div>
+                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">const IS_DEV_MODE = typeof import.meta !== 'undefined' &&
+                    import.meta.env &&
+                    import.meta.env.VITE_DEV_MODE === 'true';</code></pre>
+                </div>
+            </div>
+
+            <!-- Code 3 -->
+            <div class="mb-10">
+                <h3 class="text-xl font-semibold mb-4">3. Pattern לעדכון Functions</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        Backend Function
                     </div>
                     <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">let profile_id;
 
-<span class="text-green-400">// Dev mode support</span>
+<span class="text-green-400">// Dev mode - מקבל profile_id בבקשה</span>
 if (body.profile_id) {
     profile_id = body.profile_id;
 } else {
-    <span class="text-pink-400">// Original production flow</span>
+    <span class="text-purple-400">// Production - משתמש מחובר</span>
     const user = await base44.auth.me();
     const profiles = await base44.asServiceRole
         .entities.Profile.filter({ user_email: user.email });
@@ -350,71 +527,96 @@ if (body.profile_id) {
         </div>
     </section>
 
-    <!-- Troubleshooting Section -->
+    <!-- Summary Table -->
+    <section class="py-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">סיכום בעיות ופתרונות</h2>
+            <p class="text-slate-400 text-center mb-16">טבלה מהירה למקרה שתתקלו באותן בעיות</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-slate-700">
+                            <th class="text-right py-4 px-4 text-slate-400 font-medium">בעיה</th>
+                            <th class="text-right py-4 px-4 text-slate-400 font-medium">תסמין</th>
+                            <th class="text-right py-4 px-4 text-slate-400 font-medium">פתרון</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-slate-800">
+                            <td class="py-4 px-4">לולאת Redirect</td>
+                            <td class="py-4 px-4 text-slate-400">URL מתארך בכל רענון</td>
+                            <td class="py-4 px-4 text-green-400">Dev Mode עם mock user</td>
+                        </tr>
+                        <tr class="border-b border-slate-800">
+                            <td class="py-4 px-4">פרופיל ריק</td>
+                            <td class="py-4 px-4 text-slate-400">נתונים לא נטענים</td>
+                            <td class="py-4 px-4 text-green-400">אימייל אמיתי ב-Dev Mode</td>
+                        </tr>
+                        <tr class="border-b border-slate-800">
+                            <td class="py-4 px-4">Functions לא עובדות</td>
+                            <td class="py-4 px-4 text-slate-400">"Unauthorized"</td>
+                            <td class="py-4 px-4 text-green-400">תמיכה ב-profile_id</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4">קריסה ב-Production</td>
+                            <td class="py-4 px-4 text-slate-400">"useAuth must be used..."</td>
+                            <td class="py-4 px-4 text-green-400">בדיקה בטוחה של import.meta</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
     <section class="py-24 bg-slate-900/50">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">בעיות נפוצות</h2>
-            <p class="text-slate-400 text-center mb-16">פתרונות לבעיות שנתקלתי בהן</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">טיפים למי שמתחיל</h2>
+            <p class="text-slate-400 text-center mb-16">מה למדתי מהתהליך</p>
 
-            <div class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-6">
                 <div class="glass rounded-xl p-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-lg mb-1">לולאת Redirect אינסופית</h4>
-                            <p class="text-slate-400 text-sm mb-2">URL הולך ומתארך בכל רענון</p>
-                            <p class="text-green-400 text-sm">פתרון: הגדירו mock user ב-AuthContext עבור dev mode</p>
-                        </div>
-                    </div>
+                    <div class="text-2xl mb-3">1.</div>
+                    <h3 class="font-semibold mb-2">התחילו קטן</h3>
+                    <p class="text-slate-400 text-sm">קודם רק MCP Server לקריאת נתונים, אחר כך Dev Mode</p>
                 </div>
-
                 <div class="glass rounded-xl p-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-lg mb-1">useAuth must be used within AuthProvider</h4>
-                            <p class="text-slate-400 text-sm mb-2">קריסה ב-Base44 אחרי push</p>
-                            <p class="text-green-400 text-sm">פתרון: השתמשו בבדיקה הבטוחה עם typeof import.meta</p>
-                        </div>
-                    </div>
+                    <div class="text-2xl mb-3">2.</div>
+                    <h3 class="font-semibold mb-2">בדקו אחרי כל Push</h3>
+                    <p class="text-slate-400 text-sm">גם מקומית וגם ב-Production. טעויות קורות.</p>
                 </div>
-
                 <div class="glass rounded-xl p-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-lg mb-1">Functions מחזירות Unauthorized</h4>
-                            <p class="text-slate-400 text-sm mb-2">ב-dev mode אין session</p>
-                            <p class="text-green-400 text-sm">פתרון: שלחו profile_id בגוף הבקשה ועדכנו את ה-functions</p>
-                        </div>
-                    </div>
+                    <div class="text-2xl mb-3">3.</div>
+                    <h3 class="font-semibold mb-2">שלחו צילומי מסך</h3>
+                    <p class="text-slate-400 text-sm">כשיש שגיאות - תמונה שווה אלף מילים. Claude מבין מיד.</p>
+                </div>
+                <div class="glass rounded-xl p-6">
+                    <div class="text-2xl mb-3">4.</div>
+                    <h3 class="font-semibold mb-2">אל תפחדו מטעויות</h3>
+                    <p class="text-slate-400 text-sm">עשינו Push שגרם לקריסה - ותיקנו תוך דקות. Git שומר הכל.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Security Warning -->
     <section class="py-24">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="glass rounded-3xl p-12 glow">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">מוכנים להתחיל?</h2>
-                <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-                    קראו את הסיפור המלא - כל הפרומפטים, הבעיות והפתרונות. מדריך מעשי שנכתב תוך כדי עבודה אמיתית.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="GUIDE.md" class="bg-white text-slate-900 font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                        המדריך המלא עם כל הפרומפטים
-                    </a>
-                    <a href="https://base44.com" target="_blank" class="glass hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all">
-                        מה זה Base44?
-                    </a>
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-red-950/30 border border-red-900/50 rounded-2xl p-8">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-red-400 mb-2">אזהרת אבטחה</h3>
+                        <ul class="text-slate-300 space-y-2">
+                            <li>• <strong>לעולם</strong> אל תעלו API Keys לריפו פומבי</li>
+                            <li>• השתמשו <strong>תמיד</strong> בקובץ .env (שנמצא ב-.gitignore)</li>
+                            <li>• ב-Base44 ניתן ליצור API Key חדש ולבטל ישנים בכל עת</li>
+                            <li>• ה-Dev Mode עובד רק עם משתני סביבה מקומיים</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -423,12 +625,16 @@ if (body.profile_id) {
     <!-- Footer -->
     <footer class="py-12 border-t border-slate-800">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <p class="text-slate-500 mb-4">
+            <p class="text-slate-400 mb-4">
+                <span class="text-white font-medium">זה באמת עובד כמו קסם.</span>
+            </p>
+            <p class="text-slate-500 mb-6">
                 נבנה על ידי <span class="text-white">Lior</span> עם <span class="text-brand-400">Claude Code</span> | ינואר 2026
             </p>
-            <p class="text-slate-600 text-sm">
-                המדריך הזה נוצר על בסיס ניסיון אמיתי. הקוד עובד ונבדק.
-            </p>
+            <div class="flex justify-center gap-6">
+                <a href="https://base44.com" target="_blank" class="text-slate-500 hover:text-white transition-colors">Base44</a>
+                <a href="https://claude.ai/code" target="_blank" class="text-slate-500 hover:text-white transition-colors">Claude Code</a>
+            </div>
         </div>
     </footer>
 
