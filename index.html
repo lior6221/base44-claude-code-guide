@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base44 + Claude Code | המדריך המלא לחיבור</title>
+    <meta name="description" content="איך לחבר את Base44 ל-Claude Code ב-30 דקות - מדריך מלא עם קוד, טיפים ופתרון בעיות">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .code-block {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .code-header {
+            background: #334155;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .code-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .code-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #eab308; }
+        .dot-green { background: #22c55e; }
+        pre code {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .step-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .glow {
+            box-shadow: 0 0 60px rgba(14, 165, 233, 0.3);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white font-sans antialiased">
+
+    <!-- Hero Section -->
+    <section class="min-h-screen relative overflow-hidden bg-grid">
+        <!-- Gradient Orbs -->
+        <div class="absolute top-20 left-1/4 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 pt-20 pb-32">
+            <!-- Badge -->
+            <div class="flex justify-center mb-8">
+                <div class="glass rounded-full px-4 py-2 text-sm text-slate-300 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    מדריך מעשי - נבדק ועובד
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-5xl md:text-7xl font-bold text-center mb-6 leading-tight">
+                חיבור <span class="gradient-text">Base44</span><br>
+                ל-<span class="gradient-text">Claude Code</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-slate-400 text-center max-w-3xl mx-auto mb-12">
+                המדריך המלא לסנכרון דאטא בין פלטפורמת Low-Code לסביבת פיתוח מקומית.
+                <span class="text-white font-medium">ב-30 דקות.</span>
+            </p>
+
+            <!-- Stats -->
+            <div class="flex flex-wrap justify-center gap-8 mb-16">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-brand-400">30</div>
+                    <div class="text-slate-500 text-sm">דקות התקנה</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-400">100%</div>
+                    <div class="text-slate-500 text-sm">חינמי</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-pink-400">2-Way</div>
+                    <div class="text-slate-500 text-sm">סנכרון דו-כיווני</div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#start" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-brand-500/25">
+                    להתחיל עכשיו
+                </a>
+                <a href="https://github.com/lior6221/MyBudget" target="_blank" class="glass hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div class="relative z-10 max-w-4xl mx-auto px-6 -mt-10">
+            <div class="glass rounded-2xl p-8 glow">
+                <div class="text-center text-sm text-slate-400 mb-6">ארכיטקטורת החיבור</div>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                    <div class="bg-slate-800/50 rounded-xl px-6 py-4 border border-slate-700">
+                        <div class="text-2xl mb-1">Base44</div>
+                        <div class="text-xs text-slate-500">Production App</div>
+                    </div>
+                    <div class="text-brand-400 text-2xl">
+                        <svg class="w-8 h-8 rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                    <div class="bg-purple-900/30 rounded-xl px-6 py-4 border border-purple-700/50">
+                        <div class="text-2xl mb-1">MCP Server</div>
+                        <div class="text-xs text-slate-500">localhost bridge</div>
+                    </div>
+                    <div class="text-purple-400 text-2xl">
+                        <svg class="w-8 h-8 rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                    <div class="bg-pink-900/30 rounded-xl px-6 py-4 border border-pink-700/50">
+                        <div class="text-2xl mb-1">Claude Code</div>
+                        <div class="text-xs text-slate-500">AI Assistant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section class="py-24 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">מה תקבלו?</h2>
+            <p class="text-slate-400 text-center mb-16 max-w-2xl mx-auto">חיבור מלא בין סביבת הפיתוח המקומית לדאטא האמיתי ב-Base44</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass rounded-2xl p-6 step-card">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">דאטא אמיתי מקומית</h3>
+                    <p class="text-slate-400 text-sm">הרצה של `npm run dev` עם כל הנתונים האמיתיים מ-Base44</p>
+                </div>
+
+                <div class="glass rounded-2xl p-6 step-card">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">סנכרון דו-כיווני</h3>
+                    <p class="text-slate-400 text-sm">שינויים מקומיים מתעדכנים ישירות ב-Base44</p>
+                </div>
+
+                <div class="glass rounded-2xl p-6 step-card">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Claude Code עם דאטא</h3>
+                    <p class="text-slate-400 text-sm">Claude יכול לגשת ולעבוד עם הנתונים האמיתיים</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section id="start" class="py-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">4 צעדים להתחברות</h2>
+            <p class="text-slate-400 text-center mb-16">עקבו אחרי המדריך ותהיו מחוברים תוך חצי שעה</p>
+
+            <!-- Step 1 -->
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center font-bold">1</div>
+                    <h3 class="text-2xl font-semibold">סנכרון GitHub</h3>
+                </div>
+                <p class="text-slate-400 mb-6">חברו את הריפו שלכם ל-Base44. כל push ל-main יעדכן אוטומטית את ה-Preview.</p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        Terminal
+                    </div>
+                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">git remote add origin https://github.com/YOUR_USER/YOUR_APP
+git push -u origin main</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-10 h-10 bg-purple-500 rounded-xl flex items-center justify-center font-bold">2</div>
+                    <h3 class="text-2xl font-semibold">יצירת MCP Server</h3>
+                </div>
+                <p class="text-slate-400 mb-6">MCP מאפשר ל-Claude Code לתקשר עם Base44. צרו תיקייה חדשה:</p>
+                <div class="code-block mb-4">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        mcp-server/package.json
+                    </div>
+                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">{
+  "name": "base44-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "dotenv": "^16.3.1"
+  }
+}</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        .mcp.json (project root)
+                    </div>
+                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">{
+  "mcpServers": {
+    "base44": {
+      "command": "node",
+      "args": ["mcp-server/index.js"]
+    }
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-10 h-10 bg-pink-500 rounded-xl flex items-center justify-center font-bold">3</div>
+                    <h3 class="text-2xl font-semibold">הגדרת Dev Mode</h3>
+                </div>
+                <p class="text-slate-400 mb-6">הנקודה הקריטית - בדיקה בטוחה של environment variables שלא תקרוס ב-Production:</p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        Safe Dev Mode Check
+                    </div>
+                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono"><span class="text-pink-400">// WRONG - will crash in Base44</span>
+const IS_DEV = import.meta.env.VITE_DEV_MODE === 'true';
+
+<span class="text-green-400">// CORRECT - safe check</span>
+const IS_DEV = typeof import.meta !== 'undefined' &&
+               import.meta.env &&
+               import.meta.env.VITE_DEV_MODE === 'true';</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold">4</div>
+                    <h3 class="text-2xl font-semibold">עדכון Backend Functions</h3>
+                </div>
+                <p class="text-slate-400 mb-6">כל Function צריכה לתמוך ב-profile_id מהבקשה (ל-dev mode) בנוסף ל-auth.me():</p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        Backwards-compatible Function Pattern
+                    </div>
+                    <pre class="p-4 overflow-x-auto"><code class="text-slate-300 font-mono">let profile_id;
+
+<span class="text-green-400">// Dev mode support</span>
+if (body.profile_id) {
+    profile_id = body.profile_id;
+} else {
+    <span class="text-pink-400">// Original production flow</span>
+    const user = await base44.auth.me();
+    const profiles = await base44.asServiceRole
+        .entities.Profile.filter({ user_email: user.email });
+    profile_id = profiles[0].id;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Troubleshooting Section -->
+    <section class="py-24 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">בעיות נפוצות</h2>
+            <p class="text-slate-400 text-center mb-16">פתרונות לבעיות שנתקלתי בהן</p>
+
+            <div class="space-y-4">
+                <div class="glass rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-1">לולאת Redirect אינסופית</h4>
+                            <p class="text-slate-400 text-sm mb-2">URL הולך ומתארך בכל רענון</p>
+                            <p class="text-green-400 text-sm">פתרון: הגדירו mock user ב-AuthContext עבור dev mode</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-1">useAuth must be used within AuthProvider</h4>
+                            <p class="text-slate-400 text-sm mb-2">קריסה ב-Base44 אחרי push</p>
+                            <p class="text-green-400 text-sm">פתרון: השתמשו בבדיקה הבטוחה עם typeof import.meta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-1">Functions מחזירות Unauthorized</h4>
+                            <p class="text-slate-400 text-sm mb-2">ב-dev mode אין session</p>
+                            <p class="text-green-400 text-sm">פתרון: שלחו profile_id בגוף הבקשה ועדכנו את ה-functions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="glass rounded-3xl p-12 glow">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">מוכנים להתחיל?</h2>
+                <p class="text-slate-400 mb-8 max-w-xl mx-auto">
+                    הקוד המלא זמין ב-GitHub. תוכלו לראות דוגמה עובדת של אפליקציית תקציב מחוברת ל-Claude Code.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://github.com/lior6221/MyBudget" target="_blank" class="bg-white text-slate-900 font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        צפייה בקוד המלא
+                    </a>
+                    <a href="BASE44_CLAUDE_CODE_GUIDE.md" class="glass hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all">
+                        מדריך טקסטואלי מלא
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-slate-500 mb-4">
+                נבנה על ידי <span class="text-white">Lior</span> עם <span class="text-brand-400">Claude Code</span> | ינואר 2026
+            </p>
+            <p class="text-slate-600 text-sm">
+                המדריך הזה נוצר על בסיס ניסיון אמיתי. הקוד עובד ונבדק.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
